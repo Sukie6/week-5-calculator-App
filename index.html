@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <link rel ="stylesheet" type="text/css" href="styles.css">
+      </head>
+
+        <body>
+            <table border="1">
+                <tr>
+                    <td colspan="4">
+                        <input type="text" id="inputBox" value="0"/>
+                    </td>   
+                </tr>
+                <tr>
+                    <td onclick="digitBtPressed(7)">7</td>
+                    <td onclick="digitBtPressed(8)">8</td>
+                    <td onclick="digitBtPressed(9)">9</td>
+                    <td onclick="digitBtPressed(x)">x</td>
+                </tr>
+                <tr>
+                    <td onclick="digitBtPressed(4)">4</td>
+                    <td onclick="digitBtPressed(5)">5</td>
+                    <td onclick="digitBtPressed(6)">6</td>
+                    <td onclick="digitBtPressed('-')">-</td>
+                </tr>
+                <tr>
+                    <td onclick="digitBtPressed(1)">1</td>
+                    <td onclick="digitBtPressed(2)">2</td>
+                    <td onclick="digitBtPressed(3)">3</td>
+                    <td onclick="digitBtPressed('+')">+</td>
+                </tr>
+                <tr>
+                    <td onclick="digitBtPressed(0)" colspan="2">0</td>
+
+                    <td onclick="digitBtPressed('AC')">AC</td>
+                    <td onclick="digitBtPressed('/')">/</td>
+                </tr>
+                <tr>
+                    <td colspan="4">=</td>
+                </tr>
+            </table>
+
+            <script>
+                var newline = true;
+
+                function digitBtPressed(button) {
+
+
+                    if (newline) {
+                        document.getElementById("inputBox").value = button;
+                        newline = false;
+                    } else {
+                    var currentValue = document.getElementById("inputBox").value;
+                    document.getElementById("inputBox").value = currentValue + button;
+                }
+                }
+
+            </script>
+        </body>
+
+     </html>
