@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
       <head>
-        <link rel ="stylesheet" type="text/css" href="styles.css">
+        <link rel ="stylesheet" type="text/css" href="style.css">
       </head>
 
         <body>
@@ -12,37 +12,41 @@
                     </td>   
                 </tr>
                 <tr>
-                    <td onclick="digitBtPressed(7)">7</td>
-                    <td onclick="digitBtPressed(8)">8</td>
-                    <td onclick="digitBtPressed(9)">9</td>
-                    <td onclick="digitBtPressed(x)">x</td>
+                    <td class="digitButton" onclick="digitBtPressed(7)">7</td>
+                    <td class="digitButton" onclick="digitBtPressed(8)">8</td>
+                    <td class="digitButton" onclick="digitBtPressed(9)">9</td>
+                    <td class="operatorButton" onclick="operatorBtPressed('x')">x</td>
                 </tr>
                 <tr>
-                    <td onclick="digitBtPressed(4)">4</td>
-                    <td onclick="digitBtPressed(5)">5</td>
-                    <td onclick="digitBtPressed(6)">6</td>
-                    <td onclick="digitBtPressed('-')">-</td>
+                    <td class="digitButton" onclick="digitBtPressed(4)">4</td>
+                    <td class="digitButton" onclick="digitBtPressed(5)">5</td>
+                    <td class="digitButton" onclick="digitBtPressed(6)">6</td>
+                    <td class="operatorButton" onclick="operatorBtPressed('-')">-</td>
                 </tr>
                 <tr>
-                    <td onclick="digitBtPressed(1)">1</td>
-                    <td onclick="digitBtPressed(2)">2</td>
-                    <td onclick="digitBtPressed(3)">3</td>
-                    <td onclick="digitBtPressed('+')">+</td>
+                    <td class="digitButton" onclick="digitBtPressed(1)">1</td>
+                    <td class="digitButton" onclick="digitBtPressed(2)">2</td>
+                    <td class="digitButton" onclick="digitBtPressed(3)">3</td>
+                    <td class="operatorButton" onclick="operatorBtPressed('+')">+</td>
                 </tr>
                 <tr>
-                    <td onclick="digitBtPressed(0)" colspan="2">0</td>
+                    <td class="digitButton" onclick="digitBtPressed(0)" colspan="2">0</td>
 
-                    <td onclick="digitBtPressed('AC')">AC</td>
-                    <td onclick="digitBtPressed('/')">/</td>
+                    <td class="ACButton" onclick="btnACPressed()">AC</td>
+                    <td class="operatorButton" onclick="operatorBtPressed('/')">/</td>
                 </tr>
                 <tr>
-                    <td colspan="4">=</td>
+                    <td class="operatorButton" colspan="4" onclick="equalsBtPressed()">=</td>
                 </tr>
             </table>
 
             <script>
-                var newline = true;
+                var newline = true;  // Boolean Variable to track if a new line is being started
+                var value1
+                var currentOperator;
 
+
+                // Event handler Function to handle digit button presses
                 function digitBtPressed(button) {
 
 
@@ -50,10 +54,51 @@
                         document.getElementById("inputBox").value = button;
                         newline = false;
                     } else {
-                    var currentValue = document.getElementById("inputBox").value;
-                    document.getElementById("inputBox").value = currentValue + button;
+                       var currentValue = document.getElementById("inputBox").value;
+                       document.getElementById("inputBox").value = currentValue + button;
+                    }
                 }
+
+                // Event handler Function to handle AC button press
+                function btnACPressed() {
+                    document.getElementById("inputBox").value = "0";
+                    newline = true;
+                } 
+
+                // Event handler Function to handle the Operator button presses
+                function operatorBtPressed(operator) {
+                    currentOperator = operator;
+                    value1 = parseInt(document.getElementById("inputBox").value);
+                    newline = true;
                 }
+
+                // Event handler Function to handle the Equals button press
+                function equalsBtPressed() {
+                    var value2 = parseInt(document.getElementById("inputBox").value);
+                    var finalTotal;
+
+                    switch (currentOperator) {
+                        case '+':
+                            finalTotal = value1 + value2;
+                            break;
+                        case '-':
+                            finalTotal = value1 - value2;
+                            break;
+                        case 'x':
+                            finalTotal = value1 * value2;
+                            break;
+                        case '/':
+                            finalTotal = value1 / value2;
+                            break;
+                        default:
+                            finalTotal = "Error";
+                    }
+
+                    document.getElementById("inputBox").value = finalTotal;
+                    value1=0
+                    newline = true;
+                }
+
 
             </script>
         </body>
