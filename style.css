@@ -12,16 +12,18 @@ tr{
 
 td{
     width: 25vw;
-    border: 1px solid #4e494d;
+    border: 0.3em solid #4e494d;
 }
 
 #inputBox{
-    background-color: #4e494d;
+
+    background-color: #c2baba;
     text-align: right;
     width: 100%;
     font-size: 2em;
-    color: #fff;
-    border: 0px;
+    color: #000000;
+    border: 1px solid #ff9e06;
+    padding: 1px;
 }
 
 .digitButton{

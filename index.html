@@ -31,12 +31,14 @@
                 </tr>
                 <tr>
                     <td class="digitButton" onclick="digitBtPressed(0)" colspan="2">0</td>
+                    
 
                     <td class="ACButton" onclick="btnACPressed()">AC</td>
                     <td class="operatorButton" onclick="operatorBtPressed('/')">/</td>
                 </tr>
                 <tr>
-                    <td class="operatorButton" colspan="4" onclick="equalsBtPressed()">=</td>
+                    <td class="operatorButton" colspan="3" onclick="equalsBtPressed()">=</td>
+                    <td class="operatorButton" onclick="percentBtPressed()">%</td>
                 </tr>
             </table>
 
@@ -69,6 +71,14 @@
                 function operatorBtPressed(operator) {
                     currentOperator = operator;
                     value1 = parseInt(document.getElementById("inputBox").value);
+                    newline = true;
+                }
+
+                // Event handler Function to handle the Percent button press
+                function percentBtPressed() {
+                    var currentValue = parseInt(document.getElementById("inputBox").value);
+                    var percentValue = currentValue / 100;
+                    document.getElementById("inputBox").value = percentValue;
                     newline = true;
                 }
 
